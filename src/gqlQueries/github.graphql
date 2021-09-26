@@ -1,0 +1,19 @@
+query GithubProfile($owner: String!, $number_of_repos: Int!) {
+  user(login: $owner) {
+    name
+    login
+    bio
+    avatarUrl
+    repositories(first: $number_of_repos) {
+      nodes {
+        name
+        description
+        updatedAt
+        primaryLanguage {
+          color
+          name
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+export { SearchBoard } from "./SearchBoard";
