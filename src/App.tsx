@@ -17,10 +17,10 @@ const App = () => {
     error,
   } = useGithubProfileQuery({
     variables: {
-      owner: userName ?? "",
-      number_of_repos: 5,
+      owner: userName ?? "", // username of github profile to find
+      number_of_repos: 5, // Number of repos to show on profile page
     },
-    skip: !userName || userName.length === 0,
+    skip: !userName || userName.length === 0, // skip calling this hook if userName is not set(first load/form invalid)
   });
 
   const handleSubmit = (search: string) => {
@@ -37,8 +37,10 @@ const App = () => {
       alignItems="center"
     >
       {!githubProfile ? (
+        // Show SearchBoard if it's first load/form invalid/form submission failed
         <SearchBoard loading={loading} error={error} onSubmit={handleSubmit} />
       ) : (
+        // Show ProfileBoard if it's successfully get profile information
         <ProfileBoard profile={githubProfile} />
       )}
     </Box>
